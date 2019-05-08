@@ -1,0 +1,58 @@
+<form #f="ngForm" (ngSubmit)="gravar(f)">
+  <div class="row">
+    <div class="input-field col s4">
+      <input type="text" class="validate" id="nome" name="nome" #nome="ngModel" ngModel>
+      <label class="active" >Curso</label>
+    </div>
+    <div class="input-field col s4">
+      <input type="text" class="validate" id="valor" name="valor" #valor="ngModel" ngModel >
+      <label class="active" >Valor</label>
+    </div>
+    <div class="input-field col s4">
+      <button type="submit" class="waves-effect waves-light btn">button</button>
+    </div>
+  </div>
+</form>
+
+<form #p="ngForm" (ngSubmit)="listarId(p)" >
+  <div class="row">
+    <div class="input-field col s4">
+      <input type="text" class="validate" id="id" name="id" #id="ngModel" ngModel >
+      <label class="active" >Passe o id</label>
+    </div>
+    <div class="input-field col s4">
+      <button type="submit" class="waves-effect waves-light btn">button</button>
+    </div>
+  </div>
+  <span *ngIf="cursoId"> Curso id: {{ cursoId.id }} -{{ cursoId.nome }} - {{ cursoId.valor }}</span>
+</form>
+
+
+<table class="centered">
+  <thead>
+    <tr>
+        <th>Cód</th>
+        <th>Curso</th>
+        <th>Valor</th>
+        <th>Ação</th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    <tr *ngFor="let curso of cursos">
+      <td>
+          {{ curso.id }}</td>
+      <td>
+        
+        {{ curso.nome }}</td>
+      <td> 
+        {{ curso.valor }}</td>
+      <td>
+       <!---->
+       <button type="submit" class="waves-effect waves-light btn" (click)="apagar(curso.id)">Apagar</button>
+      </td>
+    </tr> 
+  
+  </tbody>
+</table>
